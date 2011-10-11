@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Build scripts for building the Salesforce custom JDE Ant Tasks        -->
+<!-- author: jason.schroeder                                               -->
+<!-- (c) 2005 Sendia Corp.                                                 -->
+<!--                                                                       -->
+<!-- Requirements:                                                         -->
+<!--   build.properties in c:\documents and settings\USERNAME\             -->
+<!--   See http://thor/wiki/index.php/JDE_Ant_Toolkit                      -->
+
+<project name="AntBuilder" default="build" basedir="..">
+	
+	<property name="src" value="src"/>
+	<property name="bin" value="bin"/>
+	<property name="lib" value="lib" description="where to put the created libraries"/>
+	
+	<!-- Main target to build the AntBuilder.jar file -->
+	<target name="build" depends="" description="Build the library">
+		<mkdir dir="${bin}"/>
+	    	<javac srcdir="${src}" destdir="${bin}" debug="on" excludes="**\junit\**"/>
+		<mkdir dir="${lib}"/>
+	  	<jar destfile="${lib}\AntBuilder.jar" basedir="${bin}"/>
+	</target>
+	
+	
+	<!--
+	Issues:
+	The default build.xml for AntTasks (where my VerifySignatures and all the Sendia classes are) includes only .class files- should I edit it to include everything or just my ant-defs xml?  Should I edit it at all or 
+	just make a new AntBuilder jarfile and go from there?
+	
+	How should the build.xml of Chatter-main access AntBuilder?  Also, Chatter-main currently fails prevify.exe.  I tested my ant task and it is working just fine
+	 -->
+	
+</project>
